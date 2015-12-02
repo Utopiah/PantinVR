@@ -6,6 +6,8 @@ Giving diziness to bar patrons withou a drop of alcohol!
  * make patrons experience VR?
 * <del>add boilerplate
  * <del>cf http://vatelier.net/MyDemo/edits.html as it uses it + tweaning + STLloader
+ * consider bower or even npm instead of having a ./js directory of imports
+  * bower install webvr-boilerplate https://github.com/borismus/webvr-boilerplate
 * test boilerplate on git pages
  * cf https://help.github.com/categories/github-pages-basics/
  * <del>works on http://vatelier.net/MyDemo/PantinVR/
