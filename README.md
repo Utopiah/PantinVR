@@ -7,6 +7,7 @@ Giving diziness to bar patrons withou a drop of alcohol!
 * add boilerplate
  * cf http://vatelier.net/MyDemo/edits.html as it uses it + tweaning + STLloader
 * test boilerplate on git pages
+ * cf https://help.github.com/categories/github-pages-basics/
 * define path structure
  * array of positions + optionally action (e.g. ask user input)
   * {pos: [10,10,10], action: RequestDecision}
