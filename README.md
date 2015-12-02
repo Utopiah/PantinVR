@@ -3,6 +3,7 @@ Giving diziness to bar patrons withou a drop of alcohol!
 
 ##To do
 * define goal
+ * **A virtual pantin as a Tron/GitS theme park.**
  * make patrons experience home made VR?
  * for us: an experimentation plateform to build upon (adding scenes and features bits by bits), to explore graphics possibilities.
  * A ghost in the shell (and tron) esthetic for a virtual pantin.
@@ -15,7 +16,7 @@ Giving diziness to bar patrons withou a drop of alcohol!
 * <del>test boilerplate on git pages. Because need server side stuff.
  * <del>cf https://help.github.com/categories/github-pages-basics/
  * <del>works on http://vatelier.net/MyDemo/PantinVR/
-* Dealing with movement of users
+* Dealing with movement of users (R)
  * define path structure
   * array of positions + optionally action (e.g. ask user input)
    * {pos: [10,10,10], action: RequestDecision}
