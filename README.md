@@ -8,6 +8,7 @@ Giving diziness to bar patrons withou a drop of alcohol!
  * cf http://vatelier.net/MyDemo/edits.html as it uses it + tweaning + STLloader
 * test boilerplate on git pages
  * cf https://help.github.com/categories/github-pages-basics/
+ * works on http://vatelier.net/MyDemo/PantinVR/
 * define path structure
  * array of positions + optionally action (e.g. ask user input)
   * {pos: [10,10,10], action: RequestDecision}
