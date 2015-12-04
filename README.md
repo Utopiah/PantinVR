@@ -36,3 +36,4 @@ Giving diziness to bar patrons withou a drop of alcohol!
 * load("pantin.stl"); (F)
 * Defining and designing Actions (F)
  * Killer7 style
+* merge this file with https://github.com/OpenTechSchool-Brussels/virtual_pantin
