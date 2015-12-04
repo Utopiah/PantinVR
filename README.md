@@ -17,22 +17,20 @@ Giving diziness to bar patrons withou a drop of alcohol!
  * <del>cf https://help.github.com/categories/github-pages-basics/
  * <del>works on http://vatelier.net/MyDemo/PantinVR/
 * Dealing with movement of users (R)
- * define path structure
-  * array of positions + optionally action (e.g. ask user input)
-   * {pos: [10,10,10], action: RequestDecision}
-   * {pos: [15,10,05]}
-   * {pos: [15,10,-5], action: PathSplit}
-   * {pos: [15,10,-5], action: BoostSpeed}
- * handle user vision for options (R)
-  * acceleration, decision, etc
-  * Explore centered reticle (long gaze) for interaction
+ * <del>define path structure
+  * <del>array of positions + optionally action (e.g. ask user input)
+   * <del>{pos: [10,10,10], action: RequestDecision}
+ * Link camera and player.position / lookingAt
+ * Basic movements based on gaze (the more frontal you look, the faster you get)
+ * Explore centered reticle (long gaze) for interaction (test interaction = stoping/starting moving)
 * handle multiple users (R)
- * first connected user in control
- * following users watching
+ * Make a test connection with socket.io
+ * Chose if update whole state of the world (users' positions) each time or just when movement is happening (absolu Vs relative).
+ * Implement it!
+ * rule: first connected user in control and following users watching
  * users.json
   * {id: 1, x: 1, y: 2, z: -1, role: leader}
   * {id: 2, x: 5, y: 5, z: 5, role: viewer}
- * sent using socket.io
 * load("pantin.stl"); (F)
 * Defining and designing Actions (F)
  * Killer7 style
