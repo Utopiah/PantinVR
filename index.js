@@ -36,6 +36,8 @@ function init() {
     // === Pantin VR ===
 
     // Path Initialisation to a Regular Pentagon
+    // Each elemnt of the path array is a node
+    // Each consecutive couple of nodes defines a segment
     path.push( {position: {x: 0, y:-1, z:0}, action: action_countLap});
     path.push( {position: {x:-1, y: 0, z:0}});
     path.push( {position: {x:-1, y: 1, z:0}});
@@ -52,8 +54,7 @@ function init() {
     player.lookingAt = path[1].position - path[0].position;
     player.speed = 0;
     player.acceleration = 0;
-    player.currentNodeInPath = 0;
-    player.hasActed = false; // to check if already acted on the current path node.
+    player.currentSegment = 0; // Segment I means between node I and node I+1
 
     // Playground initialisation
     // loading pantin.stl
@@ -70,18 +71,17 @@ function animate() {
     controls.update();
 
     // === Pantin VR ===
+    var pastSegment = player.currentSegment;
+    updatePlayerPosition();
 
-    // Check if we can act on the current path node and haven't already acted
-    if(!player.hasActed && path[player.currentNodeInPath].hasOwnProperty('action')) {
-        // INTERACTING
-        player.hasActed = true;
-        path[player.currentNodeInPath].action();
+    if(pastSegment != player.currentSegment) {
+        // Player just crossed a new node. Maybe there is an action to trigger ?
+        var crossedNode = Math.max(pastSegment, player.currentSegment);
+        if( path[crossedNode].hasOwnProperty('action') ) {
+            path[crossedNode].action();
+        }
 
-    } else {
-        // MOVING
-        updatePlayerPosition();
     }
-
 
     // === ====== ===
 
@@ -92,6 +92,12 @@ function animate() {
 
 }
 
+/* ==== ==== ==== === */
+/* ==== KICK OFF ==== */
+/* ==== ==== ==== === */
+
+init();
+animate();
 
 /* ==== ==== ==== ==== */
 /* ==== PANTIN VR ==== */
@@ -128,14 +134,6 @@ function action_moodChecking() {
     // ...
 }
 
-
-
-/* ==== ==== ==== === */
-/* ==== KICK OFF ==== */
-/* ==== ==== ==== === */
-
-init();
-animate();
 
 /* ==== ==== ==== ==== ==== */
 /* ==== EVENT HANDLING ==== */
