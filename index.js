@@ -29,6 +29,7 @@ var lap = -1;
 
 function init() {
     initThreeJS();
+    camera.position.z = 1;
     initVR();
 
     addSkyBox();
@@ -44,9 +45,33 @@ function init() {
     path.push( {position: {x: 1, y: 1, z:0}, action: action_moodChecking});
     path.push( {position: {x: 1, y: 0, z:0}});
 
-
     // Visual manifestation of the path
-    // ...
+    var lineMaterial = new THREE.LineBasicMaterial({ color: 0x0000ff });
+    var lineGeometry = new THREE.Geometry();
+    for(var i = 0; i < path.length -1; i++) {
+        lineGeometry.vertices.push( path[i].position );
+    }
+    lineGeometry.vertices.push( path[0].position );
+    var line = new THREE.Line( lineGeometry, lineMaterial );
+    scene.add( line );
+
+    // Render first transition screen:
+    var screenMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff });
+
+    var radius = 0.1;
+    var segments = 12;
+    var screenGeometry = new THREE.CircleGeometry( radius, segments );
+    var screenT = new THREE.Mesh( screenGeometry, screenMaterial );
+    //rotate....
+
+    console.log(screenT.position);
+    screenT.position.set( path[0].position.x, path[0].position.y, path[0].position.z );
+    screenT.rotation.y = 1.5;
+    console.log(path[2].position);
+    console.log(screenT.position);
+    
+    scene.add( screenT );
+
 
     // Player initialisation
     player.id = 0;
@@ -80,7 +105,6 @@ function animate() {
         if( path[crossedNode].hasOwnProperty('action') ) {
             path[crossedNode].action();
         }
-
     }
 
     // === ====== ===
