@@ -21,7 +21,7 @@ gui.add(text, 'message');
 // === Pantin VR ===
 var player = [];
 var path = [];
-var lap = -1;
+var lap = 0;
 
 /* ==== ==== ==== ====  */
 /* ==== INIT SETUP ==== */
@@ -116,8 +116,13 @@ function updatePlayerPosition() {
 function action_countLap() {
     lap++;
     
+    console.log("lap:", lap);
     // Visual feedback
-    // ...
+    
+    var geometry = new THREE.SphereGeometry(1, 12, 8);
+    var newLapObject = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({color: 0xFFFFFF, transparent: true, opacity: 0.5, wireframe: true}));
+
+    displayInFrontOfPlayer(newLapObject,5);
 }
 
 // ACTION: checking mood, killer7-like decision
@@ -134,6 +139,15 @@ function action_moodChecking() {
     // ...
 }
 
+//display a 3D object in front of the user and remove it after X seconds
+function displayInFrontOfPlayer(objectToDisplay, timeDisplayed) {
+    objectToDisplay.position = player.position; //+ player.lookingAt + distanceExpected;
+    objectToDisplay.position.setZ(-5);
+    camera.add(objectToDisplay);
+    window.setTimeout(function(){
+        camera.remove(objectToDisplay);
+    }, timeDisplayed*1000);
+}
 
 /* ==== ==== ==== ==== ==== */
 /* ==== EVENT HANDLING ==== */
