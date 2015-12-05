@@ -8,6 +8,7 @@ var renderer, scene, camera;
 // VR stuff
 var controls, effect, manager;
 
+/*
 // Debug Interface
 var mydebug = true;
 var params = { }
@@ -17,6 +18,7 @@ var FizzyText = function() {
 var text = new FizzyText();
 var gui = new dat.GUI();
 gui.add(text, 'message');
+*/
 
 // === Pantin VR ===
 var player = [];
