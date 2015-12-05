@@ -8,6 +8,7 @@ var renderer, scene, camera;
 // VR stuff
 var controls, effect, manager;
 
+/*
 // Debug Interface
 var mydebug = true;
 var params = { }
@@ -17,11 +18,12 @@ var FizzyText = function() {
 var text = new FizzyText();
 var gui = new dat.GUI();
 gui.add(text, 'message');
+*/
 
 // === Pantin VR ===
 var player = [];
 var path = [];
-var lap = -1;
+var lap = 0;
 
 /* ==== ==== ==== ====  */
 /* ==== INIT SETUP ==== */
@@ -76,7 +78,7 @@ function init() {
     // Player initialisation
     player.id = 0;
     player.position = path[0].position;
-    player.lookingAt = path[1].position - path[0].position;
+    player.lookAt = path[1].position - path[0].position;
     player.speed = 0;
     player.acceleration = 0;
     player.currentSegment = 0; // Segment I means between node I and node I+1
@@ -140,8 +142,13 @@ function updatePlayerPosition() {
 function action_countLap() {
     lap++;
     
+    console.log("lap:", lap);
     // Visual feedback
-    // ...
+    
+    var geometry = new THREE.SphereGeometry(1, 12, 8);
+    var newLapObject = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({color: 0xFFFFFF, transparent: true, opacity: 0.5, wireframe: true}));
+
+    displayInFrontOfPlayer(newLapObject,5);
 }
 
 // ACTION: checking mood, killer7-like decision
@@ -158,6 +165,15 @@ function action_moodChecking() {
     // ...
 }
 
+//display a 3D object in front of the user and remove it after X seconds
+function displayInFrontOfPlayer(objectToDisplay, timeDisplayed) {
+    objectToDisplay.position = player.position; //+ player.lookingAt + distanceExpected;
+    objectToDisplay.position.setZ(-5);
+    camera.add(objectToDisplay);
+    window.setTimeout(function(){
+        camera.remove(objectToDisplay);
+    }, timeDisplayed*1000);
+}
 
 /* ==== ==== ==== ==== ==== */
 /* ==== EVENT HANDLING ==== */
