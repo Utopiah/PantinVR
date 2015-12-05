@@ -53,7 +53,7 @@ function init() {
     // Player initialisation
     player.id = 0;
     player.position = path[0].position;
-    player.lookingAt = path[1].position - path[0].position;
+    player.lookAt = path[1].position - path[0].position;
     player.speed = 0;
     player.acceleration = 0;
     player.currentSegment = 0; // Segment I means between node I and node I+1
