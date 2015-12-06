@@ -85,6 +85,7 @@ function init() {
 
     // Playground initialisation
     // loading pantin.stl
+    addPantinSTL();
 }
 
 
@@ -255,7 +256,7 @@ function addSkyBox() {
 
     // Also add a repeating grid as a skybox.
     var boxWidth = 10;
-    var texture = THREE.ImageUtils.loadTexture( 'textures/box.png');
+    var texture = THREE.ImageUtils.loadTexture( 'assets/textures/box.png');
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
     texture.repeat.set(boxWidth, boxWidth);
@@ -272,4 +273,15 @@ function addSkyBox() {
     var skybox = new THREE.Mesh(geometry, material);
     scene.add(skybox);
 
+}
+
+function addPantinSTL() {
+	var preDesignedMeshLoader=new THREE.STLLoader();
+	preDesignedMeshLoader.addEventListener('load', function (event){
+		var geometry=event.content;
+		var material=new THREE.MeshBasicMaterial({ color: 0xfdd017, wireframe: true });
+		var mesh=new THREE.Mesh(geometry, material);
+		scene.add(mesh);});
+	// STL file to be loaded
+	preDesignedMeshLoader.load('assets/pantin.stl');
 }
