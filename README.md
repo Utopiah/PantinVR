@@ -31,7 +31,8 @@ Giving diziness to bar patrons withou a drop of alcohol!
  * users.json
   * {id: 1, x: 1, y: 2, z: -1, role: leader}
   * {id: 2, x: 5, y: 5, z: 5, role: viewer}
-* load("pantin.stl"); (F)
+* <del>load("pantin.stl"); (F)
 * Defining and designing Actions (F)
+ * <del>countLap
  * Killer7 style
 * merge this file with https://github.com/OpenTechSchool-Brussels/virtual_pantin
